@@ -26,6 +26,5 @@ public class LivroRequest {
         livro.setTitulo(this.titulo);
         livro.setAnoPublicacao(this.anoPublicacao);
         return livro;
-
     }
 }
