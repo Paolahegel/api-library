@@ -6,10 +6,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+
 import java.util.List;
 
 @Repository
 public interface EmprestimoRepository extends JpaRepository<Emprestimo, Long> {
-    @Query("SELECT e FROM Emprestimo w WHERE e.usuario.id = :usuarioId AND e.status = 'ATIVO")
+    @Query("SELECT e FROM Emprestimo e WHERE e.usuario.id = :usuarioId AND e.status = 'ATIVO'")
     List<Emprestimo> buscarEmprestimoAtivosPorUsuario(@Param("usuarioId") Long usuarioId);
 }

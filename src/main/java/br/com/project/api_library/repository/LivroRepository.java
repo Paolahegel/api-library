@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface LivroRepository  extends JpaRepository<Livro, Long> {
-    List<Livro> buscaPorAnoPublicacao(Integer anoPublicacao);
+    List<Livro> anoPublicacao(Integer anoPublicacao);
 
     @Query("SELECT l FROM Livro l WHERE l.autor.id = :autorId")
     List<Livro> buscarPorAutor(@Param("autorId") Long autorId);
