@@ -6,16 +6,16 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UsarioResponse {
+public class UsuarioResponse {
     private Long id;
     private String nome;
     private String email;
     private String telefone;
 
-    public UsarioResponse(){}
+    public UsuarioResponse(){}
 
-    public static UsarioResponse fromEntity(Usuario usuario){
-        UsarioResponse dto = new UsarioResponse();
+    public static UsuarioResponse fromEntity(Usuario usuario){
+        UsuarioResponse dto = new UsuarioResponse();
         dto.setId(usuario.getId());
         dto.setNome(usuario.getNome());
         dto.setEmail(usuario.getEmail());
