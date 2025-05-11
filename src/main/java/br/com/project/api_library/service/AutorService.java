@@ -27,11 +27,14 @@ public class AutorService {
                  .map(AutorResponse::fromEntity);
 
      }
-
      public AutorResponse buscarPorId(Long id){
+         Autor autor = buscarEntidadePorId(id);
+         return AutorResponse.fromEntity(autor);
+     }
+
+     public Autor buscarEntidadePorId(Long id){
          return autorRepository.findById(id)
-                 .map(AutorResponse::fromEntity)
-                 .orElseThrow(() -> new ResourceNotFoundException("Autor não enontrado"));
+                 .orElseThrow(() -> new ResourceNotFoundException("Autor não encontrado"));
      }
 
      public void excluirAutor(Long id) {

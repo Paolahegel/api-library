@@ -1,11 +1,11 @@
 package br.com.project.api_library.service;
 
+import br.com.project.api_library.dto.autor.AutorResponse;
 import br.com.project.api_library.dto.livro.LivroRequest;
 import br.com.project.api_library.dto.livro.LivroResponse;
 import br.com.project.api_library.exceptions.ResourceNotFoundException;
 import br.com.project.api_library.model.Autor;
 import br.com.project.api_library.model.Livro;
-import br.com.project.api_library.repository.AutorRepository;
 import br.com.project.api_library.repository.LivroRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,11 +19,11 @@ import java.util.stream.Collectors;
 public class LivroService {
 
     private final LivroRepository livroRepository;
-    private final AutorRepository autorRepository;
+    private final AutorService autorService;
 
     @Transactional
     public LivroResponse criarLivro(LivroRequest dto){
-        Autor autor = autorService.buscarPorId(dto.getAutorId());
+        Autor autor = autorService.buscarEntidadePorId(dto.getAutorId());
 
         Livro livro = dto.toEntity();
         livro.setAutor(autor);
@@ -39,7 +39,7 @@ public class LivroService {
     }
 
 
-    protected Livro buscarPorId(Long id){
+    protected Livro buscarEntidadePorId(Long id){
         return livroRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Livro não encontrado"));
     }
